@@ -45,7 +45,6 @@ class NetworkManager: NSObject {
             guard response.result.isSuccess else {
                 error(String(describing: response.result.error))
                 print("Error while fetching: \(String(describing: response.result.error))")
-                completion(response.result.error as AnyObject)
                 return
             }
         

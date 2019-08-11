@@ -36,6 +36,7 @@ class PixabayImageObject: NSObject,ImageModelProtocol,Codable {
 class PixabayImage: NSObject,Codable {
 
     var totalHits: Int
+    var total: Int
     var hits : [PixabayImageObject]
     
 }
