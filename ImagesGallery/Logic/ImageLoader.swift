@@ -13,6 +13,11 @@ class ImageLoader: NSObject {
     static let sharedInstance = ImageLoader()
     
     //NOTE: max(1,page)..... Pixabay page index start from 1 not zero, so It is handled here to keep the (0) page option available for other sources
+    
+    func loadImages(page:Int,size:Int,success:@escaping ([ImageModelProtocol],Bool) -> Void, failure: @escaping (String) -> Void) {
+        self.loadImagedFromPixabay(page: page, size: size, success: success, failure: failure)
+    }
+    
     func loadImagedFromPixabay(page:Int,size:Int,success:@escaping ([ImageModelProtocol],Bool) -> Void, failure: @escaping (String) -> Void) {
         
         let request = PixabayRequest.init(paramters: ["q":"images","per_page":size,"page":max(1,page)])

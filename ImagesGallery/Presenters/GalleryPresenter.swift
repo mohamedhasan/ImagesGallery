@@ -28,7 +28,7 @@ class GalleryPresenter: NSObject {
             return
         }
         
-        ImageLoader.sharedInstance.loadImagedFromPixabay(page: currentPage, size: GalleryPresenter.PAGE_SIZE, success: { (images, hasMorePages) in
+        ImageLoader.sharedInstance.loadImages(page: currentPage, size: GalleryPresenter.PAGE_SIZE, success: { (images, hasMorePages) in
             
             self.hasMorePages = hasMorePages
             self.currentPage += 1
