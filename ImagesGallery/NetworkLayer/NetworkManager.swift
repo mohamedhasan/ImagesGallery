@@ -58,10 +58,13 @@ class NetworkManager: NSObject {
             catch {
                 print("error parsing")
             }
-        
-    
         }
+    }
     
-
+    func downloadImage(url:String,handler:@escaping (Data?) -> Void)  {
+        
+        Alamofire.request(URL(string:url)!, method: HTTPMethod.get, parameters: nil, encoding: URLEncoding.default, headers: nil).validate().responseJSON { (response) -> Void in
+            handler(response.data)
+        }
     }
 }

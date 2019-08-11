@@ -16,10 +16,22 @@ class GridViewController: BaseViewController,GridViewProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        prepareCollectionView()
+        loadData()
+    }
+    
+    func prepareCollectionView() {
+        let collectionViewLayout = collectionView?.collectionViewLayout as! LiquidCollectionViewLayout
+        collectionViewLayout.delegate = self
+        collectionViewLayout.minimumInteritemSpacing = 3
+        collectionViewLayout.minimumLineSpacing = 3
+        collectionViewLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
+    func loadData() {
         presenter.delegate = self
         presenter.loadNextPage()
     }
-    
 
     func appendImages(images: [ImageModelProtocol]) {
         dataSource.append(contentsOf: images)
@@ -49,16 +61,32 @@ class GridViewController: BaseViewController,GridViewProtocol {
 
 }
 
-extension GridViewController : UICollectionViewDelegate,UICollectionViewDataSource {
+extension GridViewController : UICollectionViewDelegate,UICollectionViewDataSource,LiquidLayoutDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dataSource.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell",for: indexPath)
-        cell.contentView.backgroundColor = .red
+        
+        let imageModel = dataSource[indexPath.row]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell",for: indexPath) as! ImageCell
+        cell.loadCell(model: imageModel)
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+    }
+    
+    func collectionView(collectionView: UICollectionView, heightForCellAtIndexPath indexPath: IndexPath, width: CGFloat) -> CGFloat {
+        let image = dataSource[indexPath.row]
+        
+        let actualWidth = CGFloat(image.imageWidth())
+        let actualHeight = CGFloat(image.imageHeight())
+        
+        return (actualHeight * CGFloat(width)) / actualWidth
+    }
+    
     
 }
