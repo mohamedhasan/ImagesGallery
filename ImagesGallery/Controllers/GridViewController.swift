@@ -110,7 +110,7 @@ extension GridViewController : UICollectionViewDelegate,UICollectionViewDataSour
     
     func collectionView(collectionView: UICollectionView, heightForCellAtIndexPath indexPath: IndexPath, width: CGFloat) -> CGFloat {
         let image = dataSource[indexPath.row]
-        
+
         let actualWidth = CGFloat(image.imageWidth())
         let actualHeight = CGFloat(image.imageHeight())
         

@@ -24,7 +24,6 @@ class GridViewPresenter: NSObject,ImagesPresentersProtocol {
     func loadNextPage() {
         
         if !hasMorePages {
-            
             self.delegate?.showError(error: "No more Images")
             return
         }

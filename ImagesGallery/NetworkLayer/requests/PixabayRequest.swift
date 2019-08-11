@@ -15,12 +15,11 @@ class PixabayRequest: NSObject,RequestProtocol {
     var headers: [String : String]?
     var paramters: [String : Any]?
     static let API_KEY = "13280635-bce6f1cabc8c35f25815a66f8"
+    static let PIXABAY_URL = "https://pixabay.com/api/"
     
      init(paramters:[String:Any]) {
-        
-        self.url = "https://pixabay.com/api/"
+        self.url = PixabayRequest.PIXABAY_URL
         self.method = .get
-        self.headers = nil
         self.paramters = paramters
         self.paramters!["key"] = PixabayRequest.API_KEY
     }
