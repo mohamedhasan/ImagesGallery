@@ -36,11 +36,13 @@ class GridViewController: BaseViewController,GridViewProtocol {
     func loadData() {
         presenter.delegate = self
         updateInProgess = true
+        showLoadingIndicator()
         presenter.loadNextPage()
     }
 
     func appendImages(images: [ImageModelProtocol]) {
         
+        hideLoadingIndicator()
         self.dataSource.append(contentsOf: images)
         var indexPathes = [IndexPath]()
         for i in self.presenter.currentRange() {
@@ -61,6 +63,8 @@ class GridViewController: BaseViewController,GridViewProtocol {
     //For now just show an alert to the user
     func showError(error: String) {
         
+        hideLoadingIndicator()
+        updateInProgess = false
         let alertController = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Ok", style: UIAlertAction.Style.cancel) {
             UIAlertAction in
@@ -99,6 +103,7 @@ extension GridViewController : UICollectionViewDelegate,UICollectionViewDataSour
         if indexPath.row == dataSource.count - 1 && !updateInProgess{
             
             updateInProgess = true
+            showLoadingIndicator()
             self.presenter.loadNextPage()
         }
     }

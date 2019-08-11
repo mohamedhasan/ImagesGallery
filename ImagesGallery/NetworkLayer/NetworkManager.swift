@@ -40,6 +40,8 @@ class NetworkManager: NSObject {
         let paramters = request.paramters
         let httpMethod = alarmofireHttpMethodMapping(request.method)
         
+        URLCache.shared = URLCache(memoryCapacity: 0, diskCapacity: 0, diskPath: nil)
+
         Alamofire.request(url!, method: httpMethod, parameters: paramters, encoding: URLEncoding.default, headers: headers).validate().responseJSON { (response) -> Void in
             
             guard response.result.isSuccess else {
@@ -63,6 +65,7 @@ class NetworkManager: NSObject {
     
     func downloadImage(url:String,handler:@escaping (Data?) -> Void)  {
         
+        URLCache.shared = URLCache(memoryCapacity: 0, diskCapacity: 0, diskPath: nil)
         Alamofire.request(URL(string:url)!, method: HTTPMethod.get, parameters: nil, encoding: URLEncoding.default, headers: nil).validate().responseJSON { (response) -> Void in
             handler(response.data)
         }
