@@ -22,6 +22,8 @@ public class LiquidCollectionViewLayout: UICollectionViewFlowLayout {
     var cachedWidth: CGFloat = 0.0
     let numberOfColumns = 2
     
+    var insertingIndexPaths = [IndexPath]()
+
     fileprivate var cache = [UICollectionViewLayoutAttributes]()
     fileprivate var contentHeight: CGFloat  = 0.0
     fileprivate var contentWidth: CGFloat {
@@ -38,6 +40,9 @@ public class LiquidCollectionViewLayout: UICollectionViewFlowLayout {
     }
 
     override public func prepare() {
+        
+        insertingIndexPaths.removeAll()
+
         guard let collectionView = collectionView else { return }
         let numberOfItems = collectionView.numberOfItems(inSection: 0)
         cellWidth = (contentWidth / 2) - (2 * horizontalPadding)
@@ -82,6 +87,28 @@ public class LiquidCollectionViewLayout: UICollectionViewFlowLayout {
         }
     }
 
+    override public func finalizeCollectionViewUpdates() {
+        super.finalizeCollectionViewUpdates()
+        
+        insertingIndexPaths.removeAll()
+    }
+    
+    override public func initialLayoutAttributesForAppearingItem(
+        at itemIndexPath: IndexPath
+        ) -> UICollectionViewLayoutAttributes? {
+        let attributes = super.initialLayoutAttributesForAppearingItem(at: itemIndexPath)
+        
+        if insertingIndexPaths.contains(itemIndexPath) {
+            attributes?.alpha = 0.0
+            attributes?.transform = CGAffineTransform(
+                scaleX: 0.1,
+                y: 0.1
+            )
+        }
+        
+        return attributes
+    }
+    
     override public func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         var layoutAttributes = [UICollectionViewLayoutAttributes]()
 

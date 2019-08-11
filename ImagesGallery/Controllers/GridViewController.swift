@@ -17,6 +17,10 @@ class GridViewController: BaseViewController,GridViewProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareCollectionView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         loadData()
     }
     
@@ -34,9 +38,21 @@ class GridViewController: BaseViewController,GridViewProtocol {
     }
 
     func appendImages(images: [ImageModelProtocol]) {
-        dataSource.append(contentsOf: images)
-        collectionView?.reloadData()
+        
+        
+        self.dataSource.append(contentsOf: images)
+        var indexPathes = [IndexPath]()
+        for i in self.presenter.currentRange() {
+            let indexPath = IndexPath(row: i, section: 0)
+            indexPathes.append(indexPath)
+        }
+        
+        self.collectionView?.performBatchUpdates({
+            self.collectionView?.insertItems(at:indexPathes)
+        }, completion: nil)
     }
+    
+    
     
     //For now just show an alert to the user
     func showError(error: String) {
