@@ -8,6 +8,10 @@
 
 import Foundation
 
-protocol ImageModelProtocol:Decodable {
-    
+protocol ImageModelProtocol {
+   
+    func previewUrl() -> String
+    func fullImageUrl() -> String
+    func imageWidth() -> Int
+    func imageHeight() -> Int
 }

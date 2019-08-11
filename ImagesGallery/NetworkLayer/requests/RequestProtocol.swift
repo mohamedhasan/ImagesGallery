@@ -8,6 +8,14 @@
 
 import Foundation
 
+enum HttpRequestMethod {
+    case get
+    case post
+}
+
 protocol RequestProtocol {
-    
+    var url : String { get set }
+    var method : HttpRequestMethod { get set }
+    var headers : [String:String]? { get set }
+    var paramters : [String:Any]? { get set }
 }

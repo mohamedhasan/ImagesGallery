@@ -10,4 +10,15 @@ import UIKit
 
 class ImageLoader: NSObject {
 
+    static let sharedInstance = ImageLoader()
+    
+    func loadImagedFromPixabay() {
+        let request = PixabayRequest.init(paramters: ["q":"faces"])
+        NetworkManager.sharedInstance.perfromRequest(request: request, of: PixabayImage.self, completion: { (response) in
+            
+        }) { (errorMessage) in
+            
+        }
+    }
+    
 }
