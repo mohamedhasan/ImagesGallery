@@ -50,19 +50,25 @@ class NetworkManager: NSObject {
                 return
             }
         
-            do{
-                if let data = try? JSONSerialization.data(withJSONObject: response.result.value!, options: .prettyPrinted) {
-                    let decoder = JSONDecoder()
-                    let model = try decoder.decode(type, from: data)
-                    completion(model as AnyObject)
-                }
-            }
-            catch {
-                print("error parsing")
+            if let data = try? JSONSerialization.data(withJSONObject: response.result.value!, options: .prettyPrinted) {
+                let model = self.decodeModel(data: data, type: type)
+                completion(model as AnyObject)
             }
         }
     }
     
+    func decodeModel <T : Codable>(data:Any,type:T.Type) -> Decodable?  {
+        do{
+            let decoder = JSONDecoder()
+            let model = try decoder.decode(type, from: data as! Data)
+            return model
+        }
+        catch {
+            print("error parsing")
+        }
+        return nil
+    }
+        
     func downloadImage(url:String,handler:@escaping (Data?) -> Void)  {
         
         URLCache.shared = URLCache(memoryCapacity: 0, diskCapacity: 0, diskPath: nil)

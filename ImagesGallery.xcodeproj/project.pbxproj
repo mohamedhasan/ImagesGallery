@@ -29,13 +29,14 @@
 		9F975522230049CB00678ACC /* ImagesPresentersProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F85A51B22FFB2C900C8F618 /* ImagesPresentersProtocol.swift */; };
 		9F97552723006CA400678ACC /* response.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F97552623006CA400678ACC /* response.json */; };
 		9F97552823006CA400678ACC /* response.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F97552623006CA400678ACC /* response.json */; };
+		9F97552A23007FC500678ACC /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F97552923007FC500678ACC /* NetworkManagerTests.swift */; };
+		9F97552C230085FE00678ACC /* TestPixabayRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F97552B230085FE00678ACC /* TestPixabayRequest.swift */; };
 		9FE64C8422FFE7F7003C0DFF /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE64C8322FFE7F7003C0DFF /* ImageCell.swift */; };
 		9FE64C8822FFFD24003C0DFF /* LiquidCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE64C8722FFFD24003C0DFF /* LiquidCollectionViewLayout.swift */; };
 		9FF7585C22FFAA380040ACF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF7585B22FFAA380040ACF5 /* AppDelegate.swift */; };
 		9FF7586122FFAA380040ACF5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FF7585F22FFAA380040ACF5 /* Main.storyboard */; };
 		9FF7586322FFAA3A0040ACF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FF7586222FFAA3A0040ACF5 /* Assets.xcassets */; };
 		9FF7586622FFAA3A0040ACF5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FF7586422FFAA3A0040ACF5 /* LaunchScreen.storyboard */; };
-		9FF7587122FFAA3A0040ACF5 /* ImagesGalleryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF7587022FFAA3A0040ACF5 /* ImagesGalleryTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,8 @@
 		9F85A52D22FFB50F00C8F618 /* RequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
 		9F85A53322FFB58700C8F618 /* PixabayRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixabayRequest.swift; sourceTree = "<group>"; };
 		9F97552623006CA400678ACC /* response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = response.json; sourceTree = "<group>"; };
+		9F97552923007FC500678ACC /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
+		9F97552B230085FE00678ACC /* TestPixabayRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPixabayRequest.swift; sourceTree = "<group>"; };
 		9FE64C8322FFE7F7003C0DFF /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		9FE64C8722FFFD24003C0DFF /* LiquidCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiquidCollectionViewLayout.swift; sourceTree = "<group>"; };
 		9FF7585822FFAA380040ACF5 /* ImagesGallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImagesGallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,7 +76,6 @@
 		9FF7586522FFAA3A0040ACF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9FF7586722FFAA3A0040ACF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9FF7586C22FFAA3A0040ACF5 /* ImagesGalleryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImagesGalleryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9FF7587022FFAA3A0040ACF5 /* ImagesGalleryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesGalleryTests.swift; sourceTree = "<group>"; };
 		9FF7587222FFAA3A0040ACF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E455C2B2537F933012524EE0 /* Pods-ImagesGallery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImagesGallery.release.xcconfig"; path = "Target Support Files/Pods-ImagesGallery/Pods-ImagesGallery.release.xcconfig"; sourceTree = "<group>"; };
 		EB50CE5B5E31ECA7E9572373 /* Pods_ImagesGallery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImagesGallery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -223,7 +225,8 @@
 			isa = PBXGroup;
 			children = (
 				9F97552623006CA400678ACC /* response.json */,
-				9FF7587022FFAA3A0040ACF5 /* ImagesGalleryTests.swift */,
+				9F97552923007FC500678ACC /* NetworkManagerTests.swift */,
+				9F97552B230085FE00678ACC /* TestPixabayRequest.swift */,
 				9FF7587222FFAA3A0040ACF5 /* Info.plist */,
 			);
 			path = ImagesGalleryTests;
@@ -419,14 +422,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F97552A23007FC500678ACC /* NetworkManagerTests.swift in Sources */,
 				9F85A52C22FFB4FB00C8F618 /* NetworkManager.swift in Sources */,
-				9FF7587122FFAA3A0040ACF5 /* ImagesGalleryTests.swift in Sources */,
 				9F85A51F22FFB30500C8F618 /* GridViewPresenter.swift in Sources */,
 				9F85A52922FFB4DD00C8F618 /* ImageLoader.swift in Sources */,
 				9F85A52522FFB3A600C8F618 /* PixabayImage.swift in Sources */,
 				9F975522230049CB00678ACC /* ImagesPresentersProtocol.swift in Sources */,
 				9F85A52222FFB35600C8F618 /* ImageModelProtocol.swift in Sources */,
 				9F85A53522FFB58700C8F618 /* PixabayRequest.swift in Sources */,
+				9F97552C230085FE00678ACC /* TestPixabayRequest.swift in Sources */,
 				9F85A52F22FFB50F00C8F618 /* RequestProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

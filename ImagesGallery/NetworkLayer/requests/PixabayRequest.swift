@@ -17,11 +17,17 @@ class PixabayRequest: NSObject,RequestProtocol {
     static let API_KEY = "13280635-bce6f1cabc8c35f25815a66f8"
     static let PIXABAY_URL = "https://pixabay.com/api/"
     
-     init(paramters:[String:Any]) {
+     init(paramters:[String:Any]?) {
         self.url = PixabayRequest.PIXABAY_URL
         self.method = .get
-        self.paramters = paramters
-        self.paramters!["key"] = PixabayRequest.API_KEY
+        
+        if let requestParamters = paramters {
+            self.paramters = requestParamters
+            self.paramters!["key"] = PixabayRequest.API_KEY
+        } else {
+            self.paramters = ["key":PixabayRequest.API_KEY]
+        }
+        
     }
     
 
