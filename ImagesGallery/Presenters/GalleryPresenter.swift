@@ -1,5 +1,5 @@
 //
-//  GridViewPresenter.swift
+//  GalleryPresenter.swift
 //  ImagesGallery
 //
 //  Created by Hasan on 8/11/19.
@@ -13,7 +13,7 @@ protocol GridViewProtocol {
     func showError(error:String)
 }
 
-class GridViewPresenter: NSObject,ImagesPresentersProtocol {
+class GalleryPresenter: NSObject {
 
     var delegate:GridViewProtocol?
     static let PAGE_SIZE = 30
@@ -28,7 +28,7 @@ class GridViewPresenter: NSObject,ImagesPresentersProtocol {
             return
         }
         
-        ImageLoader.sharedInstance.loadImagedFromPixabay(page: currentPage, size: GridViewPresenter.PAGE_SIZE, success: { (images, hasMorePages) in
+        ImageLoader.sharedInstance.loadImagedFromPixabay(page: currentPage, size: GalleryPresenter.PAGE_SIZE, success: { (images, hasMorePages) in
             
             self.hasMorePages = hasMorePages
             self.currentPage += 1
@@ -44,6 +44,6 @@ class GridViewPresenter: NSObject,ImagesPresentersProtocol {
     }
     
     func currentRange() -> Range<Int> {
-        return Range(uncheckedBounds: (lower: max(currentPage - 1,0) * GridViewPresenter.PAGE_SIZE, upper: currentCount))
+        return Range(uncheckedBounds: (lower: max(currentPage - 1,0) * GalleryPresenter.PAGE_SIZE, upper: currentCount))
     }
 }

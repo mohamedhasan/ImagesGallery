@@ -12,7 +12,7 @@ class GridViewController: BaseViewController,GridViewProtocol {
    
     var dataSource : [ImageModelProtocol] = []
     @IBOutlet weak var collectionView : UICollectionView?
-    let presenter = GridViewPresenter()
+    let presenter = GalleryPresenter()
     var updateInProgess = false
     
     override func viewDidLoad() {
