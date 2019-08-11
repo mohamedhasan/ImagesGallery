@@ -13,6 +13,7 @@ class GridViewController: BaseViewController,GridViewProtocol {
     var dataSource : [ImageModelProtocol] = []
     @IBOutlet weak var collectionView : UICollectionView?
     let presenter = GridViewPresenter()
+    var updateInProgess = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,11 +35,11 @@ class GridViewController: BaseViewController,GridViewProtocol {
     
     func loadData() {
         presenter.delegate = self
+        updateInProgess = true
         presenter.loadNextPage()
     }
 
     func appendImages(images: [ImageModelProtocol]) {
-        
         
         self.dataSource.append(contentsOf: images)
         var indexPathes = [IndexPath]()
@@ -49,7 +50,10 @@ class GridViewController: BaseViewController,GridViewProtocol {
         
         self.collectionView?.performBatchUpdates({
             self.collectionView?.insertItems(at:indexPathes)
-        }, completion: nil)
+        }, completion: { (finished) in
+            self.updateInProgess = !finished
+        })
+        
     }
     
     
@@ -92,7 +96,11 @@ extension GridViewController : UICollectionViewDelegate,UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        
+        if indexPath.row == dataSource.count - 1 && !updateInProgess{
+            
+            updateInProgess = true
+            self.presenter.loadNextPage()
+        }
     }
     
     func collectionView(collectionView: UICollectionView, heightForCellAtIndexPath indexPath: IndexPath, width: CGFloat) -> CGFloat {

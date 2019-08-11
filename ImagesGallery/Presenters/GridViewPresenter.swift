@@ -24,15 +24,16 @@ class GridViewPresenter: NSObject,ImagesPresentersProtocol {
     func loadNextPage() {
         
         if !hasMorePages {
+            
+            self.delegate?.showError(error: "No more Images")
             return
         }
         
         ImageLoader.sharedInstance.loadImagedFromPixabay(page: currentPage, size: GridViewPresenter.PAGE_SIZE, success: { (images, hasMorePages) in
             
             self.hasMorePages = hasMorePages
-            if self.hasMorePages {
-                self.currentPage += 1
-            }
+            self.currentPage += 1
+            
             if images.count > 0 {
                 self.currentCount += images.count
                 self.delegate?.appendImages(images: images)
